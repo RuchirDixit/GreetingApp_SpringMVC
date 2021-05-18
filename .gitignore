@@ -33,7 +33,7 @@ build/
 .vscode/
 
 ### Spring ###
-.mvn/*
+.mvn/
 mvnw
 mvnw.cmd
 target/
