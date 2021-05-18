@@ -9,19 +9,19 @@ import javax.persistence.Table;
 public class Greeting {
 
 	@Id
-	public int id;
+	public Long id;
 	public String message;
 	
 	public Greeting() {
-		this.id = 0;
+		this.id = 0L;
 		this.message = "";
 	}
-	public Greeting(int id, String message) {
+	public Greeting(Long id, String message) {
 		this.id = id;
 		this.message = message;
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	

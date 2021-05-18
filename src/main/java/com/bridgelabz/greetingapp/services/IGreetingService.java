@@ -4,5 +4,7 @@ import com.bridgelabz.greetingapp.models.Greeting;
 import com.bridgelabz.greetingapp.models.User;
 
 public interface IGreetingService {
-	Greeting getGreeting(User user);
+	Greeting addGreeting(User user);
+
+	Greeting getGreetingById(Long id);
 }

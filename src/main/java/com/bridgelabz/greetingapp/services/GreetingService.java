@@ -1,6 +1,7 @@
 package com.bridgelabz.greetingapp.services;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,15 +18,20 @@ public class GreetingService implements IGreetingService {
 
 	public static final Logger logger = LoggerFactory.getLogger(GreetingService.class);
 	public static final String template = "Hello %s!";
-	private static AtomicInteger id = new AtomicInteger(0);
+	private static AtomicLong id = new AtomicLong(0);
 	
 	@Autowired
 	GreetingRepository greetingRepository;
 	
 	@Override
-	public Greeting getGreeting(User user) {
+	public Greeting addGreeting(User user) {
 		String message = String.format(template, (user.toString().isEmpty() ? "World" : user.toString()));
 		return greetingRepository.save(new Greeting(id.incrementAndGet(), message));
+	}
+
+	@Override
+	public Greeting getGreetingById(Long id) {
+		return greetingRepository.findById(id).get();
 	}
 	
 

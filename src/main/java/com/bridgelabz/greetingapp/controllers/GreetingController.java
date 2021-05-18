@@ -26,13 +26,18 @@ public class GreetingController {
 	
 	@Autowired
 	public IGreetingService greetingService;
+	
 	@GetMapping("/greet")
 	public Greeting getGreet(@RequestParam(value = "name", defaultValue = "World") String name) {
 		logger.debug("Get greet from Service layer with options");
 		User user = new User();
 		user.setFirstName(name);
-		return greetingService.getGreeting(user);		
+		return greetingService.addGreeting(user);		
 	}
 	
+	@GetMapping("/getId")
+	public Greeting getGreetingById(@RequestParam("id") Long id) {
+		return greetingService.getGreetingById(id);
+	}
 
 }
