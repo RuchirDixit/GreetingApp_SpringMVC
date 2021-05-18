@@ -32,6 +32,8 @@ public class User {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return this.lastName==null ? this.firstName : this.firstName + " " + this.lastName;
+		String str = (this.firstName != null) ? this.firstName : "";
+		str += (this.lastName != null) ? this.lastName : "";
+		return str.trim();
 	}
 }
