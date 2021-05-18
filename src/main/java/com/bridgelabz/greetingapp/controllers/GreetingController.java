@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.greetingapp.models.Greeting;
+import com.bridgelabz.greetingapp.models.User;
 import com.bridgelabz.greetingapp.services.IGreetingService;
 
 @RestController
@@ -22,14 +23,15 @@ import com.bridgelabz.greetingapp.services.IGreetingService;
 public class GreetingController {
 
 	public static final Logger logger = LoggerFactory.getLogger(GreetingController.class);
-	private static AtomicInteger id = new AtomicInteger(0);
 	
 	@Autowired
 	public IGreetingService greetingService;
 	@GetMapping("/greet")
-	public String getGreet() {
-		logger.debug("Get greet from Service layer");
-		return greetingService.getGreeting();
+	public Greeting getGreet(@RequestParam(value = "name", defaultValue = "World") String name) {
+		logger.debug("Get greet from Service layer with options");
+		User user = new User();
+		user.setFirstName(name);
+		return greetingService.getGreeting(user);		
 	}
 	
 
