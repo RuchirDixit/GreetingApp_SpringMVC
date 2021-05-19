@@ -1,5 +1,6 @@
 package com.bridgelabz.greetingapp.controllers;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.Logger;
@@ -38,6 +39,11 @@ public class GreetingController {
 	@GetMapping("/getId")
 	public Greeting getGreetingById(@RequestParam("id") Long id) {
 		return greetingService.getGreetingById(id);
+	}
+	
+	@GetMapping("/get")
+	public List<Greeting> getAllGreets() {
+		return greetingService.getAllGreetings();
 	}
 
 }
