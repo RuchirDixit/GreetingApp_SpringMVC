@@ -29,4 +29,11 @@ public class Greeting {
 		return message;
 	}
 	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public void setMessage(String message) {
+		this.message = message;
+	}
 }
